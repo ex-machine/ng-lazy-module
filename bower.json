@@ -1,0 +1,20 @@
+{
+  "name": "ng-lazy-module",
+  "version": "",
+  "description": "Angular modules grew lazy",
+  "keywords": [
+    "angular",
+    "module",
+    "lazy",
+    "load"
+  ],
+  "homepage": "https://github.com/ex-machine/ng-lazy-module",
+  "license": "MIT",
+  "ignore": [],
+  "main": [
+    "./ng-lazy-module.js"
+  ],
+  "dependencies": {
+    "angular": "^1.0"
+  }
+}
