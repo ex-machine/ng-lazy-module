@@ -20,7 +20,7 @@
     "mversion": "^1.10.0",
     "uglify-js": "^2.4.24"
   },
-  "dependencies": {
-    "angular": "^1.0 <1.4"
+  "peerDependencies": {
+    "angular": "^1.0"
   }
 }
