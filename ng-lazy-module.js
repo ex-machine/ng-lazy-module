@@ -10,33 +10,34 @@
 
 			moduleInstance.config(['$provide', '$animateProvider', '$filterProvider', '$controllerProvider', '$compileProvider', '$injector', function ($provide, $animateProvider, $filterProvider, $controllerProvider, $compileProvider, $injector) {
 				angular.extend(moduleInstance.lazy, {
-					provider: $provide.provider,
-					factory: $provide.factory,
-					service: $provide.service,
-					value: $provide.value,
-					constant: $provide.constant,
-					decorator: $provide.decorator,
-					animation: $animateProvider.register,
-					filter: $filterProvider.register,
-					controller: $controllerProvider.register,
-					directive: $compileProvider.directive,
-					config: function (fn) {
-						$injector.invoke(fn || angular.noop);
-						return this;
-					}
+					provider: invoker($provide, 'provider'),
+					factory: invoker($provide, 'factory'),
+					service: invoker($provide, 'service'),
+					value: invoker($provide, 'value'),
+					constant: invoker($provide, 'constant'),
+					decorator: invoker($provide, 'decorator'),
+					animation: invoker($animateProvider, 'register'),
+					filter: invoker($filterProvider, 'register'),
+					controller: invoker($controllerProvider, 'register'),
+					directive: invoker($compileProvider, 'directive'),
+					config: invoker($injector, 'invoke', angular.noop)
 				});
 			}]);
 
 			moduleInstance.run(['$injector', function ($injector) {
-				angular.extend(moduleInstance.lazy, {
-					run: function (fn) {
-						$injector.invoke(fn || angular.noop);
-						return this;
-					}
-				});
+				moduleInstance.lazy.run = invoker($injector, 'invoke', angular.noop);
 			}]);
 		}
 
 		return moduleInstance;
 	};
+
+	function invoker(self, methodName) {
+		var defaultArgs = Array.prototype.slice.call(arguments, 2);
+
+		return function () {
+			self[methodName].apply(self, arguments.length ? arguments : defaultArgs);
+			return this;
+		};
+	}
 })(angular);
