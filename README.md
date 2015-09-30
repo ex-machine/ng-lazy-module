@@ -97,7 +97,13 @@ app.factory('lazyLoader', function ($q, $compile, $timeout) {
 
 ### Precedence
 
+`lazy.run` won't be available before `run` phase and the rest of lazy methods won't be available before `config` phase.
+
 The things can become too messy and complicated when there are several lazy modules that depend on each other. Although solid promise chains may minimize the possibility of having missing dependencies and maintain app design in a good shape.
+
+### Lazy `config`
+
+`lazy.config` can be used to get to service providers even when `config` phase is over. Existing service instances may or may not be affected with changes to corresponding providers. Replaced provider `$get` property takes effect only if the service hasn't been instantiated yet.
 
 ### Decoration
 
