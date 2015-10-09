@@ -103,7 +103,7 @@ The things can become too messy and complicated when there are several lazy modu
 
 ### Lazy `config`
 
-`lazy.config` can be used to get to service providers even when `config` phase is over. Existing service instances may or may not be affected with changes to corresponding providers. Replaced provider `$get` property takes effect only if the service hasn't been instantiated yet.
+`lazy.config` can be used to get to service providers even when `config` phase is over. Existing service instances may or may not be affected with changes made to corresponding providers. And modified provider `$get` property takes effect only if the service hasn't been instantiated yet.
 
 ### Decoration
 
