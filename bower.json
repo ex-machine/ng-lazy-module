@@ -10,10 +10,12 @@
   ],
   "homepage": "https://github.com/ex-machine/ng-lazy-module",
   "license": "MIT",
-  "ignore": [],
-  "main": [
-    "./ng-lazy-module.js"
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
   ],
+  "main": "dist/ng-lazy-module.js",
   "dependencies": {
     "angular": "^1.0"
   }
