@@ -24,6 +24,7 @@ angular.module = function () {
 				filter: invoker($filterProvider, 'register'),
 				controller: invoker($controllerProvider, 'register'),
 				directive: invoker($compileProvider, 'directive'),
+				component: invoker($compileProvider, 'component'),
 				config: invoker($injector, 'invoke', angular.noop)
 			});
 		}]);
